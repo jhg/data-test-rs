@@ -1,10 +1,18 @@
 [package]
 name = "data-test"
+description = "Simple data-test (aka table-test), without custom test to run with your test runner"
+keywords = ["test", "data-test", "table-test", "data-driven", "data"]
+categories = ["development-tools::testing", "development-tools"]
 version = "0.1.0"
 authors = ["Jesús Hernández <jesushdez@protonmail.com>"]
 edition = "2018"
 license = "Unlicense"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+repository = "https://github.com/jhg/data-test-rs"
+readme = "README.md"
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+    "LICENSE",
+]
 
 [dependencies]

@@ -1,7 +1,11 @@
 # Data-Test
 Rust data-test (aka table-test) helpers
 
-# Getting Started
+[![Build Status](https://travis-ci.com/jhg/data-test-rs.svg?branch=master)](https://travis-ci.com/jhg/data-test-rs)
+![GitHub](https://img.shields.io/github/license/jhg/data-test-rs)
+![Crates.io](https://img.shields.io/crates/v/data-test)
+
+## Getting Started
 Add to your test dependencies:
 ```toml
 [dev-dependencies]

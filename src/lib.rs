@@ -14,13 +14,15 @@
 /// ```no_run
 /// #[cfg(test)]
 /// mod tests {
+///     use data_test::data_test;
+/// 
 ///     #[test]
 ///     fn it_works() {
 ///         assert_eq!(2 + 2, 4);
 ///     }
 /// 
 ///     data_test!{
-///         is_equal(input, expected) => {
+///         fn is_equal(input, expected) => {
 ///             assert_eq!(input, expected);
 ///         }
 ///         - a (1, 1)
@@ -32,6 +34,7 @@
 ///     }
 /// }
 /// // cargo test output:
+/// // test tests::it_works ... ok
 /// // test tests::is_equal::a ... ok
 /// // test tests::is_equal::b ... ok
 /// // test tests::is_equal::c ... ok

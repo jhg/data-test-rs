@@ -23,6 +23,12 @@ notifications:
         on_success: never
         on_failure: never
 
+deploy:
+    provider: cargo
+    token: $CARGO_LOGIN_TOKEN
+    on:
+        tags: true
+
 script:
     - cargo test
     - cargo doc --no-deps

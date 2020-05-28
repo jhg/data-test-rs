@@ -41,12 +41,13 @@
 /// // test tests::is_equal::d ... ok
 /// // test tests::is_equal::e ... ok
 /// // test tests::is_equal::f ... ok
+/// # fn main() {}
 /// ```
 // NOTE: the doc test only can check if compile but doc test does not run tests inside of doc test, then use no_run attribute
 #[macro_export]
 macro_rules! data_test {
     {
-        $prefix:ident $input:pat => $main:block
+        fn $prefix:ident $input:pat => $main:block
         $(- $name:ident $($value:tt),*)*
     } => {
         mod $prefix {
@@ -60,11 +61,11 @@ macro_rules! data_test {
         }
     };
     {$(
-        $prefix:ident $input:pat => $main:block
+        fn $prefix:ident $input:pat => $main:block
         $(- $name:ident $($value:tt),*)*
     )*} => {$(
         $crate::data_test!{
-            $prefix $input => $main
+            fn $prefix $input => $main
             $(- $name ($($value),*))*
         }
     )*};
@@ -81,7 +82,7 @@ mod tests {
     }
 
     data_test!{
-        is_equal(input, expected) => {
+        fn is_equal(input, expected) => {
             assert_eq!(input, expected);
         }
         - a (1, 1)
@@ -91,21 +92,21 @@ mod tests {
     }
 
     data_test!{
-        is_not_equal(input, expected) => {
+        fn is_not_equal(input, expected) => {
             assert_ne!(input, expected);
         }
         - a (1, 2)
         - b 1, 3
         - c (1, 4)
 
-        is_not_zero input => {
+        fn is_not_zero input => {
             assert_ne!(input, 0);
         }
         - a 1
         - b (2)
         - c 3
 
-        test_multiplication(first, second, expected) => {
+        fn test_multiplication(first, second, expected) => {
             assert_eq!(first * second, expected);
         }
         - a (2, 2,   4)

@@ -1,0 +1,43 @@
+name: Rust check & tests
+
+on:
+  schedule: # Run tests weekly to try to test with new dependencies versions
+    - cron: '0 0 * * 0' # If you have a Cargo.lock remove this
+  push:
+    branches: [ main, master, dev, develop ]
+    paths:
+    - '.github/workflows/rust-check-test.yml'
+    - '**/*.rs'
+    - '**/Cargo.toml'
+    - '**/Cargo.lock'
+  pull_request:
+    branches: [ main, master, dev, develop ]
+    paths:
+    - '.github/workflows/rust-check-test.yml'
+    - '**/*.rs'
+    - '**/Cargo.toml'
+    - '**/Cargo.lock'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        rust: [ stable, beta ]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        override: true
+    - name: Check
+      run: cargo check --verbose
+    - name: Run tests
+      run: cargo test --verbose -- --show-output
+    - name: Run ignored tests
+      run: cargo test --verbose -- --show-output --ignored

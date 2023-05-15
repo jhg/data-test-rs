@@ -51,6 +51,7 @@ macro_rules! data_test {
         $(- $name:ident $($value:tt),*)*
     } => {
         mod $prefix {
+            use super::*;
             $(
                 #[test]
                 fn $name () {

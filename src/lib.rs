@@ -1,16 +1,13 @@
-//! # Data-Test
-//! 
-//! Aka table-test.
-
-
 #![forbid(unsafe_code)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
+#![doc = include_str!("../README.md")]
 
 
 /// Create sub module with tests for multiple input data
 /// 
 /// # Examples
+/// 
 /// ```no_run
 /// #[cfg(test)]
 /// mod tests {

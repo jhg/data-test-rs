@@ -1,4 +1,5 @@
 # Data-Test
+
 Rust data-test (aka table-test) helpers
 
 [![Build Status](https://travis-ci.com/jhg/data-test-rs.svg?branch=master)](https://travis-ci.com/jhg/data-test-rs)
@@ -6,13 +7,16 @@ Rust data-test (aka table-test) helpers
 ![Crates.io](https://img.shields.io/crates/v/data-test)
 
 ## Getting Started
+
 Add to your test dependencies:
+
 ```toml
 [dev-dependencies]
 data-test = "^0.1"
 ```
 
 Example of usage:
+
 ```rust
 #[cfg(test)]
 mod tests {

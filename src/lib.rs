@@ -48,8 +48,10 @@ macro_rules! data_test {
         $(- $name:ident $($value:tt),*)*
     } => {
         mod $prefix {
+            #[allow(unused_imports)]
             use super::*;
             $(
+
                 #[test]
                 fn $name () {
                     let $input = ($($value),*);
